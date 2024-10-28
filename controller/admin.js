@@ -135,6 +135,27 @@ exports.getAll = async (req, res, next) => {
         next(err);
     }
 };
+exports.add = async (req, res, next) => {
+
+    try {
+        const data = new Admin(req.body);
+
+        const newData = await data.save();
+
+        // Final Response
+        res.status(200).json({
+            message: "Successfully Added",
+            data: newData
+        });
+    } catch (err) {
+        if (!err.statusCode) {
+            err.statusCode = 500;
+            err.message = "Something went wrong on database operation!";
+        }
+        console.log(err);
+        next(err);
+    }
+};
 exports.delete = async (req, res, next) => {
     try {
         const id = req.params.id;
