@@ -60,7 +60,7 @@ exports.adminLogin = async (req, res, next) => {
     try {
         const username = req.body.username;
         const password = req.body.password;
-
+        console.log(username, password);
         let token;
 
         const admin = await Admin.findOne({
