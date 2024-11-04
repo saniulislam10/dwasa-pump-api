@@ -146,7 +146,6 @@ exports.add = async (req, res, next) => {
 
         data.password = hashedPass
 
-        console.log(data)
 
         const admin = new Admin(data)
 
