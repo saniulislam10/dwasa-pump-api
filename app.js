@@ -77,3 +77,6 @@ mongoose
   .catch((err) => {
     console.error("Oops! Could not connect to mongoDB Cluster0", err);
   });
+
+
+  module.exports = app;
