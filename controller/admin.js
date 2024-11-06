@@ -138,9 +138,18 @@ exports.getAll = async (req, res, next) => {
 exports.add = async (req, res, next) => {
 
     try {
-        const data = new Admin(req.body);
+        const data = (req.body);
+        const { confirmPassword, password } = data;
+        delete data.confirmPassword;
 
-        const newData = await data.save();
+        const hashedPass = bcrypt.hashSync(password, 8);
+
+        data.password = hashedPass
+
+
+        const admin = new Admin(data)
+
+        const newData = await admin.save();
 
         // Final Response
         res.status(200).json({
