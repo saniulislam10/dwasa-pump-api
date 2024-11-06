@@ -91,6 +91,26 @@ exports.getAll = async (req, res, next) => {
         next(err);
     }
 };
+exports.get = async (req, res, next) => {
+
+    try {
+        const pumps = await Pump.find();
+
+
+        // Final Response
+        res.status(200).json({
+            message: "Success",
+            data: pumps
+        });
+    } catch (err) {
+        if (!err.statusCode) {
+            err.statusCode = 500;
+            err.message = "Something went wrong on database operation!";
+        }
+        console.log(err);
+        next(err);
+    }
+};
 exports.getById = async (req, res, next) => {
 
     try {

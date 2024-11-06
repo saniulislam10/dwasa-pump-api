@@ -60,7 +60,8 @@ mongoose.set('strictQuery', false);
 mongoose
   .connect(
     // `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:27017/${process.env.DB_NAME}?authSource=${process.env.AUTH_SOURCE}`,
-    `mongodb://0.0.0.0:27017/${process.env.DB_NAME}`,
+    // `mongodb://0.0.0.0:27017/${process.env.DB_NAME}`,
+    `mongodb+srv://sani:${process.env.DB_PASSWORD}@cluster0.ngr6z.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`,
 
     {
       useNewUrlParser: true,
