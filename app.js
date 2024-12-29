@@ -59,15 +59,15 @@ app.use(errorHandler.next);
 mongoose.set('strictQuery', false);
 mongoose
   .connect(
-    `mongodb://0.0.0.0:27017/${process.env.DB_NAME}`,
-    // `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=Cluster0`,
+    // `mongodb://0.0.0.0:27017/${process.env.DB_NAME}`,
+    `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=Cluster0`,
 
-    // {
-      // useNewUrlParser: true,
-      //  useFindAndModify: false,
-      // useUnifiedTopology: true,
-      //  useCreateIndex: true
-    // }
+    {
+      useNewUrlParser: true,
+       useFindAndModify: false,
+      useUnifiedTopology: true,
+       useCreateIndex: true
+    }
   )
   .then(() => {
     const port = process.env.PORT || 3000;
