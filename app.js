@@ -64,9 +64,7 @@ mongoose
 
     {
       useNewUrlParser: true,
-       useFindAndModify: false,
       useUnifiedTopology: true,
-       useCreateIndex: true
     }
   )
   .then(() => {
