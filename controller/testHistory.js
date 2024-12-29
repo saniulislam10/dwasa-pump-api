@@ -117,7 +117,7 @@ exports.getAll = async (req, res, next) => {
 exports.getById = async (req, res, next) => {
 
     try {
-        const testHistory = await TestHistory.findOne({ _id: req.params.id });
+        const testHistory = await TestHistory.findOne({ _id: req.params.id }).populate('tester');
 
         // Final Response
         res.status(200).json({
