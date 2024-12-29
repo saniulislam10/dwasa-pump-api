@@ -74,6 +74,32 @@ exports.edit = async (req, res, next) => {
         next(err);
     }
 };
+exports.addComment = async (req, res, next) => {
+
+    try {
+
+        
+        const testHistory = await TestHistory.updateOne(
+            { _id: req.body._id },
+            { $set: {
+                comment: req.body.comment
+            } }
+        );
+
+        // Final Response
+        res.status(200).json({
+            data: testHistory,
+            message: "Successfully Edited",
+        });
+    } catch (err) {
+        if (!err.statusCode) {
+            err.statusCode = 500;
+            err.message = "Something went wrong on database operation!";
+        }
+        console.log(err);
+        next(err);
+    }
+};
 exports.getAll = async (req, res, next) => {
     try {
         const filter = req.body.filter || {};

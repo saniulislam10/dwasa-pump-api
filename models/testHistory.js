@@ -53,6 +53,10 @@ const schema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Admin',
         required: true
+    },
+    comment:{
+        type: String,
+        required: false
     }    
 }, {
     timestamps: true
