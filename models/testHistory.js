@@ -48,7 +48,12 @@ const schema = new Schema({
     testDate: {
         type: Date,
         required: true,
-    },    
+    },
+    tester: {
+        type: Schema.Types.ObjectId,
+        ref: 'Admin',
+        required: true
+    }    
 }, {
     timestamps: true
 });

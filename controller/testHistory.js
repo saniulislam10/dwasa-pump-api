@@ -15,6 +15,9 @@ const validateData = async (data) => {
 exports.add = async (req, res, next) => {
 
     try {
+        const id = req.adminData.userId;
+        console.log("Id", id);
+        const finalData = {...{tester: id}, ...req.body}
         const testHistory = new TestHistory(req.body);
 
         const updated = await Pump.updateOne({ _id: testHistory.pumpId }, { $set: { pumpRunningStatus: testHistory.pumpStatus } });

@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 
 module.exports = (req, res, next) => {
   const authHeader = req.get("Administrator");
+  console.log(authHeader);
   if (!authHeader) {
     const error = new Error("Sorry! Not a Administrator.");
     error.statusCode = 401;
