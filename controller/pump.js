@@ -68,12 +68,20 @@ exports.getAll = async (req, res, next) => {
 
     try {
         const filter = req.body.filter;
+        const select = req.body.select;
+        console.log('pump');
+        console.log(select);
         let dataDoc;
         if (filter) {
             dataDoc = Pump.find(filter);
         } else {
             dataDoc = Pump.find();
+
         }
+        if(select){
+         dataDoc.select(select)
+        }
+        
         const pumps = await dataDoc;
 
 

@@ -104,6 +104,7 @@ exports.getAll = async (req, res, next) => {
     try {
         const filter = req.body.filter || {};
         const zoneFilter = req.body.filter?.zone; // Zone passed from the request body
+        const select = req.body.select;
         let dataDoc;
 
         // If zoneFilter exists, find pumpIds based on the zone
@@ -116,6 +117,11 @@ exports.getAll = async (req, res, next) => {
             // Add pumpId filter to the query
             filter.pumpId = { $in: pumpIds };
         }
+        // ------
+        if(select){
+            dataDoc.select(select)
+           }
+        //   ------ 
 
         // Fetch TestHistory data with optional filter
         dataDoc = TestHistory.find(filter);
